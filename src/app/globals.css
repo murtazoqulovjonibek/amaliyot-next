@@ -1,1 +1,388 @@
 @import "tailwindcss";
+
+body{
+    background-color: rgb(250, 250, 250);
+}
+
+.navbar{
+    width: 100%;
+    height: 80px;
+}
+
+.navbar-container{
+    max-width: 1300px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo{
+    width: 155px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.nav-link{
+    width: 420px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-contact-link{
+    width: 180px;
+    height: 55px;
+    background-color: #7C4EE4;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms;
+}
+
+.nav-contact-link:hover{
+    transform: translateY(-4px);
+}
+
+
+
+
+
+.heroSection{
+    width: 100%;
+    height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background: linear-gradient(135deg,#7C4EE4,#8b6cff);
+    padding:60px;
+    color:white;
+}
+
+.hero-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.heroText{
+    width: 650px;
+    height: 480px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: start;
+}
+
+.heroText h1{
+    font-size:64px;
+    font-weight: 700;
+    padding-right: 70px;
+}
+
+.heroText p{
+    padding-right: 250px;
+}
+
+.heroImage{
+    height: 580px;
+    width: 650px;
+}
+
+.heroText button{
+    width: 170px;
+    height: 55px;
+    color: #373737;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+
+
+
+
+.recentPost{
+    max-width: 1300px;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+.recenpost-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.recentPost h3{
+    color: #333333;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.recent-viewBtn{
+    width: 125px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #7C4EE4;
+    color: #7C4EE4;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.recentpost-bottom{
+    display:flex;
+    gap:50px;
+    margin-top:40px;
+}
+
+.recentpost-bottom img{
+    width:712px;
+    height: 456px;
+    border-radius:16px;
+}
+
+.recentText{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.recentText h3{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.recent-development{
+    color: #333333;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.recent-date{
+    color: #999999;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.recentText p{
+    color: #666666;
+    font-size: 16px;
+    font-weight: 400;
+    padding-right: 80px;
+}
+
+.recent-btn{
+    width: 125px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #7C4EE4;
+    color: #7C4EE4;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.postGrid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:25px;
+    margin-top:40px;
+}
+
+.postCard{
+    margin-top: 10px;
+}
+
+.postCard img{
+    width:400px;
+    height: 360px;
+    border-radius:16px;
+}
+
+.postInfo{
+    margin-top:15px;
+}
+
+.postTravel{
+    font-size:12px;
+    font-weight: 700;
+    color:#333333;
+}
+
+.post-date{
+    margin-left:10px;
+    color: #999999;
+    font-weight: 500;
+}
+
+.postTitle{
+    font-size:24px;
+    font-weight: 700;
+    color: #333333;
+    margin:10px 0;
+}
+
+.postDesc{
+    font-size:14px;
+    padding-right: 100px;
+    color:#666;
+    margin-bottom: 20px;
+}
+
+.post-readMore{
+    color:#7C4EE4;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.popular{
+    max-width: 1300px;
+    margin:0 auto;
+    margin-top: 80px;
+}
+
+.popularHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.viewAll{
+  background:#7C4EE4;
+  color:white;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+}
+
+.popularGrid{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:30px;
+  margin-top:40px;
+}
+
+.popularpost-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.popular h3{
+    color: #333333;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.popular-viewBtn{
+    width: 125px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #7C4EE4;
+    color: #7C4EE4;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+
+
+
+
+
+.subscribe{
+    height: 534px;
+    background: linear-gradient(135deg,#7C4EE4,#8F6CFF);
+    text-align:center;
+    padding:80px 20px;
+    color:white;
+    margin-top:80px;
+    padding: 0 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subscribe h2{
+  font-size:52px;
+  font-weight: 700;
+  margin-bottom:30px;
+}
+
+.subscribeForm{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.subscribeForm input{
+    width: 320px;
+    height: 50px;
+    border-radius: 8px;
+    background-color:#FFFFFF;
+    color: #FFFFFF;
+    font-weight: 400;
+    color: #5A7184;
+    font-size: 16px;
+    outline: none;
+    padding: 0 20px;
+}
+
+.subscribeForm button{
+    width: 125px;
+    height: 50px;
+    border-radius: 8px;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding:50px 20px;
+    gap: 20px;
+}
+
+.footerMenu{
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  margin:20px 0;
+}
+
+.social{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.social span{
+  background:#7C4EE4;
+  color:white;
+  padding:8px 12px;
+  border-radius:50%;
+}
+
+.footer hr{
+  margin:20px auto;
+  width:70%;
+}
+
+.subscribeText{
+    color: #BBBBBB;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 120px;
+}

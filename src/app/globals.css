@@ -350,7 +350,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items:center;
-    padding:50px 20px;
+    padding:50px 80px;
     gap: 20px;
 }
 
@@ -359,6 +359,12 @@ body{
   justify-content:center;
   gap:50px;
   margin:20px 0;
+}
+
+.copyright{
+    color: #150E06;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .social{
@@ -385,4 +391,53 @@ body{
     font-size: 16px;
     font-weight: 400;
     padding: 0 120px;
+}
+
+.hr{
+    border: 1px solid #dfd2fd;
+    width: 100%;
+}
+
+
+
+
+
+
+
+.blogPage{
+    max-width: 1300px;
+    margin-top:60px;
+    margin: 0 auto;
+}
+
+.blogHeader{
+    text-align:center;
+    margin-bottom:51px;
+}
+
+.blogSmall{
+  color:#666666;
+  font-size: 16px;
+  font-weight:700;
+}
+
+.blogHeader h1{
+  font-size: 48px;
+  color: #333333;
+  font-weight: 700;
+  margin:15px 0;
+}
+
+.blogDesc{
+  color: #666666;
+  max-width:750px;
+  font-size: 16px;
+  margin:auto;
+  font-weight: 400;
+}
+
+.blogGrid{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:30px;
 }

@@ -25,7 +25,7 @@ export default function Footer(){
 
       </div>
 
-      <hr/>
+      <div className="hr"/>
 
       <p className="copyright">
         Copyright Ideapeel Inc © 2023. All Right Reserved

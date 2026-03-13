@@ -15,11 +15,6 @@ export default function PopularPosts() {
       <div className="popularGrid">
 
         <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
 
       </div>
 

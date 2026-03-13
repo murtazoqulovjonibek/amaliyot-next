@@ -32,13 +32,11 @@ export default function RecentPosts() {
 
       </div>
 
-    <div className="postGrid container">
+      <div className="postGrid">
 
-      <PostCard/>
-      <PostCard/>
-      <PostCard/>
+        <PostCard/>
 
-    </div>
+      </div>
 
     </div>  
 )

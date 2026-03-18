@@ -1,6 +1,8 @@
+import { Post } from "@/types/type"
 import PostCard from "./PostCard"
+import Link from "next/link"
 
-export default function PopularPosts() {
+export default function PopularPosts({ posts }: { posts: Post[] }) {
   return (
     <section className="popular">
 
@@ -8,13 +10,17 @@ export default function PopularPosts() {
 
         <h3>Popular Post</h3>
 
-        <button className="popular-viewBtn">View All</button>
+        <Link href="/blog">
+          <button className="popular-viewBtn">View All</button>
+        </Link>
 
       </div>
 
       <div className="popularGrid">
 
-        <PostCard />
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post}/>
+        ))}
 
       </div>
 

@@ -3,6 +3,9 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Subscribe from "@/components/Subscribe.tsx";
+import { AuthProvider } from "@/context/AuthContext";
+import { BrowserRouter } from "react-router-dom";
+import 'rodal/lib/rodal.css'
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
-        <Subscribe />
-        <Footer />
+        <AuthProvider>
+          <BrowserRouter>
+            <Navbar />
+            {children}
+            <Subscribe />
+            <Footer />
+          </BrowserRouter>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 export default function Subscribe() {
   return (
     <section className="subscribe">
-      <div>
+      <div className="subs">
         <h2>
           Get our stories delivered From
           us to your inbox weekly.

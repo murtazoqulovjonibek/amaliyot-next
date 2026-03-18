@@ -1,43 +1,57 @@
-import PostCard from "./PostCard";
+import { Post } from "@/types/type"
+import PostCard from "./PostCard"
+import Link from "next/link"
 
-export default function RecentPosts() {
+export default function RecentPosts({ posts }: { posts: Post[] }) {
+
+  const mainPost = posts[0]
+
   return (
     <div className="recentPost">
+
       <div className="recenpost-top">
+
         <h3>Our Recent Post</h3>
 
-        <button className="recent-viewBtn">View All</button>
+        <Link href="/blog">
+          <button className="recent-viewBtn">View All</button>
+        </Link>
 
       </div>
 
-      <div className="recentpost-bottom">
+      {mainPost && (
+        <div className="recentpost-bottom">
 
-        <img src="/FeaturedPost.png"/>
+          <img src={mainPost.image} alt={mainPost.title}/>
 
-        <div className="recentText">
+          <div className="recentText">
 
-          <span className="recent-development">DEVELOPMENT<span className="recent-date">16 March 2023</span></span>
+            <span className="recent-development">
+              {mainPost.category}
+              <span className="recent-date"> {mainPost.date}</span>
+            </span>
 
-          <h3>
-            How to make a Game look more attractive with New VR & AI Technology
-          </h3>
+            <h3>{mainPost.title}</h3>
 
-          <p>
-            Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it’s publishing state-of-the-art research, building helpful products or developing tools and resources that enable others, we’re committed to making AI accessible to everyone.
-          </p>
+            <p>{mainPost.desc}</p>
 
-          <button className="recent-btn">Read More</button>
+            <Link href={`/blog/${mainPost.id}`}>
+              <button className="recent-btn">Read More</button>
+            </Link>
+
+          </div>
 
         </div>
-
-      </div>
+      )}
 
       <div className="postGrid">
 
-        <PostCard/>
+        {posts.map(post => (
+          <PostCard key={post.id} post={post}/>
+        ))}
 
       </div>
 
-    </div>  
-)
+    </div>
+  )
 }

@@ -1,57 +1,66 @@
-import PostCard from "@/components/PostCard";
+import { doc, getDoc, increment, updateDoc, collection, getDocs } from "firebase/firestore"
+import { db } from "@/firebase/firebase.config"
+import { Post } from "@/types/type"
+import PopularPosts from "@/components/PopularPosts"
 
-export default function SingleBlog() {
-  return (
-    <main className="singleBlog">
+interface Props {
+    params: Promise<{ id: string }>
+}
 
-        <div className="q">
-            <div>
-                <p className="singleblog-Meta">
-                    <span className="single-dev">DEVELOPMENT</span><span className="single-date">16 March 2023</span> ❤️ 24
-                </p>
+export default async function SingleBlog({ params }: Props) {
+    const { id } = await params
 
-                <h1 className="singlePost">
-                    How to make a Game look more attractive with New VR & AI Technology
-                </h1>
+    const docRef = doc(db, "posts", id)
+    const docSnap = await getDoc(docRef)
+
+    if (!docSnap.exists()) {
+        return <p>Post not found</p>
+    }
+
+    await updateDoc(docRef, {
+        views: increment(1)
+    })
+
+    const post = {
+        id: docSnap.id, ...(docSnap.data() as Omit<Post,"id">)
+    }
+
+    const querySnapshot = await getDocs(collection(db,"posts"))
+
+    const posts: Post[] = querySnapshot.docs.map(doc => ({
+        id: doc.id, ...(doc.data() as Omit<Post,"id">)
+    }))
+
+    const popularPosts = posts.filter(p => p.id !== id).sort((a,b)=>b.views - a.views).slice(0,3)
+
+    return (
+        <main className="singleBlog">
+
+            <div className="q">
+                <div>
+                    <div className="singleblog-Meta">
+                        <div>
+                            <span className="single-dev">{post.category}</span>
+                            <span className="single-date">{post.date}</span>
+                        </div>
+
+                        <span className="single-view">👁 {post.views}</span>
+                    </div>
+
+                    <h1 className="singlePost">
+                        {post.title}
+                    </h1>
+                </div>
             </div>
-        </div>
 
-        <img
-            className="postImage"
-            src="/FeaturedPost.png"
-            alt="blog image"
-        />
+            <img className="postImage" src={post.image} alt={post.title} />
 
-        <p className="postText">
-            Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it’s publishing state-of-the-art research, building helpful products or developing tools and resources that enable others, we’re committed to making AI accessible to everyone.
-        </p>
+            <p className="postText">
+                {post.desc}
+            </p>
 
-        <p className="postText">
-            We’re now at a pivotal moment in our AI journey. Breakthroughs in generative AI are fundamentally changing how people interact with technology — and at Google, we’ve been responsibly developing large language models so we can safely bring them to our products. Today, we’re excited to share our early progress. Developers and businesses can now try new APIs and products that make it easy, safe and scalable to start building with Google’s best AI models through Google Cloud and a new prototyping environment called MakerSuite. And in Google Workspace, we’re introducing new features that help people harness the power of generative AI to create, connect and collaborate.
-        </p>
+            <PopularPosts posts={popularPosts}/>
 
-        <div className="singletexts">
-            <div>
-                <blockquote className="quote">
-                    “People worry that computers will get too smart and take over the world, but the real problem is that they’re too stupid and they’ve already taken over the world.”
-                </blockquote>
-            </div>
-        </div>
-
-        <div>
-
-            <div className="singlepost-top">
-                <h3>Popular Post</h3>
-
-                <button className="single-viewBtn1">View All</button>
-            </div>
-
-            <div className="singleGrid">
-                <PostCard />
-            </div>
-
-        </div>
-
-    </main>
-  )
+        </main>
+    )
 }

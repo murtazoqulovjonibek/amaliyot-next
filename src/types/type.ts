@@ -7,4 +7,11 @@ export interface Post {
   date: string
   views: number
   likes: number
+  featured: boolean
+}
+
+export interface User {
+  id: string
+  email: string | null
+  role: "admin" | "user"
 }

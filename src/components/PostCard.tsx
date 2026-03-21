@@ -10,9 +10,12 @@ export default function PostCard({ post }: { post: Post }) {
 
       <div className="postInfo">
 
-        <p className="postTravel">
-          {post?.category}<span className="post-date"> {post?.date}</span>
-        </p>
+        <div className="postTravel">
+          <div>
+            {post?.category}<span className="post-date"> {post?.date}</span>
+          </div>
+          <span className="single-view">👁 {post.views}</span>
+        </div>
 
         <h6 className="postTitle">
           {post?.title}

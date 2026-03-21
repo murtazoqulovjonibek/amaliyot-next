@@ -31,17 +31,19 @@ export default function Navbar() {
         }
 
         const success = await login(email, password)
-        
+                
         if (success) {
             setIsOpen(false)
-            router.push('/admin')
+            setEmail('')
+            setPassword('')
+            router.push('/admin/posts')
         }
     }
 
     return (
         <div className="navbar">
             <div className="navbar-container">
-                <img src="../nav-logo.png" alt="no Img" className="nav-logo"/>
+                <img src="/nav-logo.png" alt="no Img" className="nav-logo"/>
                 <div className="nav-link">
                     {navbarMenu.map((item, idx) => (
                         <Link href={item.path} key={idx} className={`${ pathname === item.path ? "text-[#7C4EE4]" : ''}`}>{item.name}</Link>
@@ -66,7 +68,7 @@ export default function Navbar() {
                         <span className="text-white">Email</span>
                         <input type="text" className="border-2 border-gray-500 mt-3 py-3 text-white w-full rounded-lg p-2" placeholder="enter your email" value={email} onChange={e => setEmail(e.target.value)}/>   
                         <span className="text-white">Password</span>
-                        <input type="text" className="border-2 border-gray-500 py-3 text-white mt-3 w-full rounded-lg p-2" placeholder="enter your password" value={password} onChange={e => setPassword(e.target.value)}/>
+                        <input type="password" className="border-2 border-gray-500 py-3 text-white mt-3 w-full rounded-lg p-2" placeholder="enter your password" value={password} onChange={e => setPassword(e.target.value)}/>
                         
                         {(error || validationError) ? (
                             <div className="border-red-800 rounded-lg border-2 py-2.5 text-[#c57575] text-sm px-2 bg-[#4e2222]">{error || validationError}</div>

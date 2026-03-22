@@ -14,6 +14,72 @@ body{
     display: none;
 }
 
+.menuBtn{
+    display: none;
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobileMenu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 25px;
+    z-index: 999;
+
+    /* 🔥 ANIMATION */
+    transform: translateX(100%);
+    transition: 0.3s ease;
+}
+
+.mobileMenu.open{
+    transform: translateX(0);
+}
+
+.menuLink{
+    height: 100%;
+    padding: 250px 0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.mobileMenu a{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+
+.closeBtn{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 998;
+}
+
 .navbar-container{
     max-width: 1300px;
     margin: 0 auto;
@@ -100,7 +166,19 @@ body{
     display: none;
 }
 
-.navPhone{
+.admin-btn{
+    width: 80px;
+    height: 40px;
+    background-color: black;
+    border-radius: 6px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms;
+}
+
+.menuBtn{
     display: block;
 }
 }
@@ -962,6 +1040,22 @@ body{
     font-size: 20px;
 }
 
+.likeBtn{
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.2s;
+}
+
+.likeBtn:hover{
+    background: #7C4EE4;
+    color: white;
+    transform: scale(1.05);
+}
+
 button {
     cursor: pointer;
 }
@@ -1069,6 +1163,16 @@ button {
 
 .single-view{
     font-size: 13px;
+}
+
+.likeBtn{
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
 }
 
 button {
@@ -1808,6 +1912,7 @@ textarea{
 
 .adminContent{
     width: calc(5/6 * 100%);
+    flex: 1;
     height: 95vh;
 }
 
@@ -1815,14 +1920,6 @@ textarea{
     font-size: 28px;
     font-weight: 700;
 }
-/* 
-.adminContent > div:first-child{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-} */
 
 .sidebar{
     width: 100%;
@@ -1869,18 +1966,104 @@ textarea{
     gap: 8px;
 }
 
+.adminLayout{
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebarFather{
+    width: 240px;
+}
+
+/* MOBILE HEADER */
+.adminMobileHeader{
+    display: none;
+    height: 60px;
+    background: white;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 30px;
+}
 
 
+
+
+/* OVERLAY */
+.adminOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 998;
+}
 
 .adminCardContainer{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     overflow-y: auto;
-    height: 91vh;
-    padding: 16px 40px;
+    height: 90vh;
+    padding: 16px 0px;
     padding-left: 66px;
 }
+
+/* 🔥 MOBILE */
+@media screen and (min-width:0) and (max-width:768px){
+
+    .adminLayout{
+        flex-direction: column;
+    }
+
+    .adminMobileHeader{
+        display: flex;
+    }
+
+    .sidebarFather{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 240px;
+        background: #111;
+        transform: translateX(-100%);
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .sidebarFather.open{
+        transform: translateX(0);
+    }
+
+    .adminContent{
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 5px;
+    }
+
+    .adminCardContainer{
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        overflow-y: auto;
+        height: 90vh;
+        padding: 10px 10px;
+        padding-left: 10px;
+    }
+
+}
+
+
+
+
+
 
 /* CARD */
 .adminCard{
@@ -1983,6 +2166,33 @@ textarea{
     background: #c62828;
 }
 
+@media screen and (min-width:0) and (max-width:768px){
+.Add-post{
+    padding: 0 0px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    justify-content: space-between;
+}
+
+.Add-post button{
+    width: 130px;
+    height: 45px;
+    background: #8b6cff;
+    color: white;
+    transition: 0.3s;
+    border-radius: 8px;
+}
+
+.Add-post button:hover{
+    transform: translateY(-2px);
+    background: #7C4EE4;
+}
+}
+
 
 
 .add-header{
@@ -2050,6 +2260,32 @@ textarea{
 }
 
 
+/* 📱 MOBILE (480px gacha) */
+@media (max-width: 480px){
+    .adminForm{
+        width: 100%;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .adminForm input,
+    .adminForm textarea{
+        font-size: 13px;
+        padding: 9px;
+    }
+
+    .adminForm textarea{
+        min-height: 100px;
+    }
+
+    .adminForm button{
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+
 
 .Contact-Head{
     padding: 15px 30px;
@@ -2096,3 +2332,140 @@ textarea{
     padding: 6px 10px;
     border-radius: 6px;
 }
+
+/* RODAL CONTAINER (override) */
+.rodal-dialog{
+    padding: 0 !important;
+    border-radius: 15px !important;
+}
+
+/* WRAPPER */
+.modalWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* FORM */
+.loginForm{
+    background: black;
+    padding: 25px;
+    border-radius: 12px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* TITLE */
+.loginForm h1{
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.loginForm p{
+    color: gray;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* LABEL */
+.loginForm span{
+    color: white;
+    font-size: 14px;
+}
+
+/* INPUT */
+.loginForm input{
+    border: 2px solid #555;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    background: transparent;
+    outline: none;
+}
+
+/* INPUT FOCUS */
+.loginForm input:focus{
+    border-color: #7C4EE4;
+}
+
+/* ERROR */
+.errorBox{
+    border: 2px solid #7a2c2c;
+    background: #4e2222;
+    color: #c57575;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* BUTTON */
+.loginBtn{
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.loginBtn:hover{
+    transform: translateY(-3px);
+    background: #eee;
+}
+
+/* 🔥 RESPONSIVE */
+@media(max-width:768px){
+    .Contact-Head{
+        padding: 15px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ContCard-container{
+        width: 100%;
+        display: flex;
+        height: 86vh;
+        justify-content: center;
+        align-items: start;
+        flex-wrap: wrap;
+        gap: 20px;
+        overflow-y: auto;
+        margin-top: 30px;
+    }
+
+    .rodal-dialog{
+        width: 90% !important;
+        min-height: auto !important;
+    }
+
+    .loginForm{
+        width: 100%;
+        padding: 20px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .loginForm{
+        padding: 15px;
+    }
+
+    .loginForm h1{
+        font-size: 18px;
+    }
+
+}
+
+
+
+

@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useAuth } from "@/context/UseAuth"
 
-export default function Sidebar() {
+export default function Sidebar({ close }: { close: () => void }) {
 
   const pathname = usePathname()
   const router = useRouter()
@@ -17,7 +17,7 @@ export default function Sidebar() {
 
   const handleLogout = () => {
     logout()
-    router.push("/") // 🔥 home ga qaytadi
+    router.push("/")
   }
 
   return (
@@ -34,7 +34,7 @@ export default function Sidebar() {
             return (
               <li key={index} className={`mb-2 rounded-xl border border-gray-300 transition-all duration-500
                 ${ isActive ? "bg-[#7C4EE4] text-black" : "hover:bg-[#7C4EE4]" }`}>
-                <Link href={item.path} className="p-3 font-medium text-lg">
+                <Link href={item.path} onClick={close} className="p-3 font-medium text-lg">
                   {item.name}
                 </Link>
               </li>

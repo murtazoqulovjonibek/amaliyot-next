@@ -7,6 +7,7 @@ import Subscribe from "@/components/Subscribe.tsx";
 import { AuthProvider } from "@/context/AuthContext";
 import 'rodal/lib/rodal.css'
 import { usePathname } from "next/navigation";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname()
@@ -16,10 +17,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         <AuthProvider>
-          {!isAdmin && <Navbar />}
-          {children}
-          {!isAdmin && <Subscribe />}
-          {!isAdmin && <Footer />}
+          <LayoutWrapper>
+            {children}
+          </LayoutWrapper>
         </AuthProvider>
       </body>
     </html>

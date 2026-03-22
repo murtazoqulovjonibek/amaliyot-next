@@ -2,6 +2,7 @@ import { doc, getDoc, increment, updateDoc, collection, getDocs } from "firebase
 import { db } from "@/firebase/firebase.config"
 import { Post } from "@/types/type"
 import PopularPosts from "@/components/PopularPosts"
+import LikeButton from "@/components/LikeButton"
 
 interface Props {
     params: Promise<{ id: string }>
@@ -44,7 +45,7 @@ export default async function SingleBlog({ params }: Props) {
                             <span className="single-date">{post.date}</span>
                         </div>
 
-                        <span className="single-view">👁 {post.views}</span>
+                        <LikeButton id={post.id} initialLikes={post.likes || 0} />
                     </div>
 
                     <h1 className="singlePost">

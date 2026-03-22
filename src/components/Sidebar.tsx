@@ -22,7 +22,6 @@ export default function Sidebar({ close }: { close: () => void }) {
 
   return (
     <div className="sidebar">
-
       <div>
         <h2 className="text-black text-2xl mb-15 font-bold">Admin</h2>
 

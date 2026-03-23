@@ -14,7 +14,9 @@ export default function HeroSection({ post }: { post: Post }) {
 
           <h1>{post.title}</h1>
 
-          <p>{post.desc}</p>
+          <p>
+            {post.desc.length > 120 ? post.desc.slice(0 , 242) + '...' : post.desc}
+          </p>
 
           <Link href={`/blog/${post.id}`}>
             <button className="heroText-button">Read More</button>

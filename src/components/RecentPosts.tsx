@@ -33,7 +33,7 @@ export default function RecentPosts({ posts }: { posts: Post[] }) {
 
             <h3>{mainPost.title}</h3>
 
-            <p>{mainPost.desc}</p>
+            <p>{mainPost.desc.length > 120 ? mainPost.desc.slice(0 , 600) + '...' : mainPost.desc}</p>
 
             <Link href={`/blog/${mainPost.id}`}>
               <button className="recent-btn">Read More</button>

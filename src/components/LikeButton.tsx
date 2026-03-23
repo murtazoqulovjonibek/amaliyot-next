@@ -3,6 +3,7 @@
 import { doc, updateDoc, increment } from "firebase/firestore"
 import { db } from "@/firebase/firebase.config"
 import { useState } from "react"
+import { FaHeart } from "react-icons/fa"
 
 export default function LikeButton({ id, initialLikes }: { id: string, initialLikes: number }) {
 
@@ -25,8 +26,8 @@ export default function LikeButton({ id, initialLikes }: { id: string, initialLi
     }
 
     return (
-        <button onClick={handleLike} className="likeBtn">
-        ❤️ {likes}
+        <button onClick={handleLike} className="likeBtn flex items-center gap-3">
+        <FaHeart /> {likes}
         </button>
     )
 }

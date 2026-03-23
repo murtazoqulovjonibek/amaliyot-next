@@ -1039,11 +1039,15 @@ body{
 
 .single-view{
     font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .likeBtn{
     background: #fff;
     border: 1px solid #eee;
+    color: red;
     padding: 6px 12px;
     border-radius: 20px;
     cursor: pointer;

@@ -57,7 +57,6 @@ export default function Navbar() {
                         {navbarMenu.map((item, idx) => (
                             <Link href={item.path} key={idx} className={`${ pathname === item.path ? "text-[#7C4EE4]" : ''}`}>{item.name}</Link>
                         ))}
-                        <img src="../nav-search.png" alt="no Img" style={{ width: '23px', height: '23px', objectFit: 'contain' }}/>
                         <div className="nn">
                             <Link className="nav-contact-link" href={'/contact'}>Contact Us</Link>
                         </div>
